@@ -1,136 +1,146 @@
-S_lower_bit = ["e", "t", "a", "o", "i", "n", "s", "r", "E", "T", "A", "O", "I", "N", "S", "R"]
-L_lower_bit = ["h", "l", "d", "c", "u", "m", "f", "p", "g", "w", "y", "b", "v", "k", "x", "j", "q", "z", "H", "L", "D","C", "U", "M", "F", "P", "G", "W", "Y", "B", "V", "K", "X", "J", "Q", "Z"]
-Special_bit = [".", ",", "-", "!", "'", '"', " ", "\n"]
-print("please enter the name of document below")
-file = input()
-doc = open(file,"r")
-paper = doc.read()
-binary = ""
-for item in paper:
-  if item in S_lower_bit:
-      binary += "1"
-  if item in L_lower_bit:
-      binary += "0"
-  if item in Special_bit:
-      binary += "0"
-  if item == "e":
-      binary += "0000"
-  if item == "t":
-      binary += "0001"
-  if item == "a":
-      binary += "0010"
-  if item == "o":
-      binary += "0011"
-  if item == "i":
-      binary += "0100"
-  if item == "n":
-      binary += "0101"
-  if item == "s":
-      binary += "0110"
-  if item == "r":
-      binary += "0111"
-  if item == "E":
-      binary += "1000"
-  if item == "T":
-      binary += "1001"
-  if item == "A":
-      binary += "1010"
-  if item == "O":
-      binary += "1011"
-  if item == "I":
-      binary += "1100"
-  if item == "N":
-      binary += "1101"
-  if item == "S":
-      binary += "1110"
-  if item == "R":
-      binary += "1111"
-  if item == "h":
-      binary += "000000"
-  if item == "l":
-      binary += "000001"
-  if item == "d":
-      binary += "000010"
-  if item == "c":
-      binary += "000011"
-  if item == "u":
-      binary += "000100"
-  if item == "m":
-      binary += "000101"
-  if item == "f":
-      binary += "000110"
-  if item == "p":
-      binary += "000111"
-  if item == "g":
-      binary += "001000"
-  if item == "w":
-      binary += "001001"
-  if item == "y":
-      binary += "001010"
-  if item == "b":
-      binary += "001011"
-  if item == "v":
-      binary += "001100"
-  if item == "k":
-      binary += "001101"
-  if item == "x":
-      binary += "001110"
-  if item == "j":
-      binary += "001111"
-  if item == "q":
-      binary += "010000"
-  if item == "z":
-      binary += "010001"
-  if item == "H":
-      binary += "010010"
-  if item == "L":
-      binary += "010011"
-  if item == "D":
-      binary += "010100"
-  if item == "C":
-      binary += "010101"
-  if item == "U":
-      binary += "010110"
-  if item == "M":
-      binary += "010111"
-  if item == "F":
-      binary += "011000"
-  if item == "P":
-      binary += "011001"
-  if item == "G":
-      binary += "011010"
-  if item == "W":
-      binary += "011011"
-  if item == "Y":
-      binary += "011100"
-  if item == "B":
-      binary += "011101"
-  if item == "V":
-      binary += "011110"
-  if item == "K":
-      binary += "011111"
-  if item == "X":
-      binary += "100000"
-  if item == "J":
-      binary += "100001"
-  if item == "Q":
-      binary += "100010"
-  if item == "Z":
-      binary += "100011"
-  if item == ".":
-      binary += "100100"
-  if item == ",":
-      binary += "100101"
-  if item == "-":
-      binary += "100110"
-  if item == "!":
-      binary += "100111"
-  if item == "'":
-      binary += "101000"
-  if item == '"':
-      binary += "101001"
-  if item == " ":
-      binary += "101010"
-  if item == "\n":
-      binary += "101011"
-print (binary)
+compress_file = open("compress.txt", "w")
+my_file = open("text_input.txt", "r")
+my_str = my_file.read()
+my_ans = ""
+
+short_bit = [" ", "e", "a", "t", "o", "n", "i", "s", "r", "h", "d", "l", "m", "u", "c", "f"]
+long_bit = ["g", "y", "w", "p", "b", "k", "v", "j", "x", "z", "q", "T", "S", "H", "I",
+            "A", "E", "W", "D", "B", "N", "F", "Y", "P", "M", "C", "O", "U", "X", "G",
+            "V", "R", "L", "J", "K", "Q", "Z", ".", ",", "!", "'", "-", "\n"]
+
+
+def text_to_binary(my_str: str):
+    binary = ""
+    for item in my_str:
+        if item in short_bit:
+            binary += "1"
+        if item in long_bit:
+            binary += "0"
+        if item.find(" ") == 0:
+            binary += item.replace(" ", "0000")
+        if item.find("e") == 0:
+            binary += item.replace("e", "0001")
+        if item.find("a") == 0:
+            binary += item.replace("a", "0010")
+        if item.find("t") == 0:
+            binary += item.replace("t", "0011")
+        if item.find("o") == 0:
+            binary += item.replace("o", "0100")
+        if item.find("n") == 0:
+            binary += item.replace("n", "0101")
+        if item.find("i") == 0:
+            binary += item.replace("i", "0110")
+        if item.find("s") == 0:
+            binary += item.replace("s", "0111")
+        if item.find("r") == 0:
+            binary += item.replace("r", "1000")
+        if item.find("h") == 0:
+            binary += item.replace("h", "1001")
+        if item.find("d") == 0:
+            binary += item.replace("d", "1010")
+        if item.find("l") == 0:
+            binary += item.replace("l", "1011")
+        if item.find("m") == 0:
+            binary += item.replace("m", "1100")
+        if item.find("u") == 0:
+            binary += item.replace("u", "1101")
+        if item.find("c") == 0:
+            binary += item.replace("c", "1110")
+        if item.find("f") == 0:
+            binary += item.replace("f", "1111")
+        if item.find("g") == 0:
+            binary += item.replace("g", "000001")
+        if item.find("y") == 0:
+            binary += item.replace("y", "000010")
+        if item.find("w") == 0:
+            binary += item.replace("w", "000011")
+        if item.find("p") == 0:
+            binary += item.replace("p", "000100")
+        if item.find("b") == 0:
+            binary += item.replace("b", "000101")
+        if item.find("k") == 0:
+            binary += item.replace("k", "000110")
+        if item.find("v") == 0:
+            binary += item.replace("v", "000111")
+        if item.find("j") == 0:
+            binary += item.replace("j", "001000")
+        if item.find("x") == 0:
+            binary += item.replace("x", "001001")
+        if item.find("z") == 0:
+            binary += item.replace("z", "001010")
+        if item.find("q") == 0:
+            binary += item.replace("q", "001011")
+        if item.find("T") == 0:
+            binary += item.replace("T", "001100")
+        if item.find("S") == 0:
+            binary += item.replace("S", "001101")
+        if item.find("H") == 0:
+            binary += item.replace("H", "001110")
+        if item.find("I") == 0:
+            binary += item.replace("I", "001111")
+        if item.find("A") == 0:
+            binary += item.replace("A", "010000")
+        if item.find("E") == 0:
+            binary += item.replace("E", "010001")
+        if item.find("W") == 0:
+            binary += item.replace("W", "010010")
+        if item.find("D") == 0:
+            binary += item.replace("D", "010011")
+        if item.find("B") == 0:
+            binary += item.replace("B", "010100")
+        if item.find("N") == 0:
+            binary += item.replace("N", "010101")
+        if item.find("F") == 0:
+            binary += item.replace("F", "010110")
+        if item.find("Y") == 0:
+            binary += item.replace("Y", "010111")
+        if item.find("P") == 0:
+            binary += item.replace("P", "011000")
+        if item.find("M") == 0:
+            binary += item.replace("M", "011001")
+        if item.find("C") == 0:
+            binary += item.replace("C", "011010")
+        if item.find("O") == 0:
+            binary += item.replace("O", "011011")
+        if item.find("U") == 0:
+            binary += item.replace("U", "011100")
+        if item.find("X") == 0:
+            binary += item.replace("X", "011101")
+        if item.find("G") == 0:
+            binary += item.replace("G", "011110")
+        if item.find("V") == 0:
+            binary += item.replace("V", "011111")
+        if item.find("R") == 0:
+            binary += item.replace("R", "100000")
+        if item.find("L") == 0:
+            binary += item.replace("L", "100001")
+        if item.find("J") == 0:
+            binary += item.replace("J", "100010")
+        if item.find("K") == 0:
+            binary += item.replace("K", "100011")
+        if item.find("Q") == 0:
+            binary += item.replace("Q", "100100")
+        if item.find("Z") == 0:
+            binary += item.replace("Z", "100101")
+        if item.find(".") == 0:
+            binary += item.replace(".", "100110")
+        if item.find(",") == 0:
+            binary += item.replace(",", "100111")
+        if item.find("!") == 0:
+            binary += item.replace("!", "101000")
+        if item.find("'") == 0:
+            binary += item.replace("'", "101001")
+        if item.find('"') == 0:
+            binary += item.replace('"', "101010")
+        if item.find("-") == 0:
+            binary += item.replace("-", "101011")
+        if item.find("\n") == 0:
+            binary += item.replace("\n", "101100")
+    return binary
+
+my_ans = my_ans + text_to_binary(my_str)
+
+length_str = str(len(my_ans))
+
+compress_file.write(length_str + "." + my_ans)
+compress_file.close()
