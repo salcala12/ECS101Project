@@ -1,6 +1,6 @@
 # ECS101Project
-# Shaw 3344
-# Text to Binary
+Shaw 3344
+Text to Binary
 
 
 S_lower_bit = ["e", "t", "a", "o", "i", "n", "s", "r", "E", "T", "A", "O", "I", "N", "S", "R"]
